@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {number, string, arrayOf, shape} from 'prop-types';
+import {number, string, arrayOf, shape, bool} from 'prop-types';
 
 class StringColorParser extends Component {
 
@@ -23,9 +23,10 @@ class StringColorParser extends Component {
   }
 
   getOpeningTag(tag, depth) {
-    const {colors, defaultColor} = this.props;
+    const {colors, defaultColor, solidHighlight} = this.props;
     const color = colors[depth - 1] || defaultColor;
-    return `<${tag} style="color:${color}">`;
+    const style = solidHighlight ? `background-color:${color};` : `color:${color};`;
+    return `<${tag} style="${style}">`;
   }
 
   parseString(input) {
@@ -80,6 +81,7 @@ class StringColorParser extends Component {
 
 StringColorParser.propTypes = {
   tag: string,
+  solidHighlight: bool,
   defaultColor: string,
   fontSize: number,
   colors: arrayOf(string),
@@ -95,6 +97,7 @@ StringColorParser.defaultProps = {
   tag: 'span',
   fontSize: 16,
   defaultColor: 'black',
+  solidHighlight: false,
   colors: ['green', 'blue', 'red', 'purple', 'yellow'],
   delimiters: [{start: '(', end: ')'}, {start: '[', end: ']'}, {start: '{', end: '}'}]
 };

@@ -11,17 +11,32 @@
  
  <Parser
     tag="span"
+    fontSize={16}
     delimiters={[{start: '${', end: '}'}, {start: '--[', end: ']--'}]}
-    colors={['green', 'red', 'blue', 'purple']}
-    fontSize={20}
+    colors={['yellowgreen', 'tomato', 'skyblue', 'papayawhip']}
     defaultColor="black"
  />
  ```
  
  Result 
- ![Alt text](./example.png?raw=true "Title")
+ ![Alt text](./example.png "Title")
  
- ##**Props**  
+ 
+  ```
+  import Parser from 'react-string-color-parser';
+  ...
+  
+  <Parser
+    colors={['yellowgreebn', 'tomato', 'skyblue', 'papayawhip']}
+    solidHighlight
+  />
+  ```
+  
+  Result 
+  ![Alt text](./exampleSolid.png "Title")
+  
+ 
+ **Props**  
  
  * **tag** - HTML tag to wrap string pieces. Default - 'span'
  

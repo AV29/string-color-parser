@@ -6,11 +6,9 @@ import './styles.less';
 
 render(
   <Parser
-    tag="span"
     delimiters={[{start: '${', end: '}'}, {start: '--[', end: ']--'}]}
-    colors={['green', 'red', 'blue', 'purple']}
-    fontSize={20}
-    defaultColor="black"
+    fontSize={16}
+    colors={['yellowgreen', 'tomato', 'skyblue', 'papayawhip']}
   />,
   document.getElementById('application-root')
 );
