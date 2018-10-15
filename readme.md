@@ -1,6 +1,6 @@
-# React String Color Parser
+# [React String Color Parser](https://www.npmjs.com/package/react-string-color-parser)
 
-## Pretty narrow use cases :) 
+## Pretty narrow use cases :)
 
 * npm install react-string-color-parser
 
