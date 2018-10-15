@@ -26,19 +26,32 @@ class ParseInput extends Component {
   }
 
   parseString(input) {
-    const {opening, closing, colorMap} = this.props;
-    const startIndexes = {};
+    const {colorMap} = this.props;
+    const bracketsConfig = [{open: '${', close: '}'}, {open: '$[', close: ']'}];
+    const bracketsStack = [];
     let string = '';
     let depth = 0;
     for (let i = 0; i < input.length; i += 1) {
       const currentChar = input.charAt(i);
-      if (currentChar === closing && depth > 0) {
-        depth -= 1;
-        string += `</span>${currentChar}`;
-      } else if (currentChar === opening) {
+      const openingBracket = bracketsConfig.find(conf => input.substr(i, conf.open.length) === conf.open);
+      const closingBracket = bracketsConfig.find(conf => input.substr(i, conf.close.length) === conf.close);
+
+      if (closingBracket && depth > 0) {
+        const targetBracket = bracketsConfig.find(conf => conf.close === closingBracket.close).open;
+        const isRightBracket = bracketsStack[bracketsStack.length - 1].open === targetBracket;
+        if (isRightBracket) {
+          depth -= 1;
+          string += `</span>${closingBracket.close}`;
+          bracketsStack.pop();
+        } else {
+          string += closingBracket.close;
+        }
+        i += closingBracket.close.length - 1;
+      } else if (openingBracket) {
         depth += 1;
-        startIndexes[depth] = i;
-        string += `${currentChar}<span style="color:${colorMap[depth - 1] || this.DEFAULT_COLOR}">`;
+        bracketsStack.push({open: openingBracket.open});
+        string += `${openingBracket.open}<span style="color:${colorMap[depth - 1] || this.DEFAULT_COLOR}">`;
+        i += openingBracket.open.length - 1;
       } else {
         string += currentChar;
       }
