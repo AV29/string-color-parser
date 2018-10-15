@@ -1,6 +1,6 @@
 {
   "name": "react-string-color-parser",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React parser for strings that highlights blocks in colors",
   "main": "./lib/es/index.js",
   "module": "./lib/es/index.js",
@@ -27,7 +27,12 @@
   "bugs": {
     "url": "https://github.com/AV29/string-color-parser#issues"
   },
-  "keywords": ["react-string-color-parser", "parse", "colors", "test input"],
+  "keywords": [
+    "react-string-color-parser",
+    "parse",
+    "colors",
+    "test input"
+  ],
   "homepage": "https://github.com/AV29/string-color-parser#readme",
   "devDependencies": {
     "babel-cli": "~6.26.0",
