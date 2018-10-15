@@ -9,8 +9,6 @@ class StringColorParser extends Component {
     this.highlights = null;
     this.textarea = null;
 
-    this.DEFAULT_COLOR = 'black';
-
     this.handleInput = this.handleInput.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
   }
@@ -26,7 +24,7 @@ class StringColorParser extends Component {
 
   getOpeningTag(tag, depth) {
     const {colors, defaultColor} = this.props;
-    const color = colors[depth - 1] || defaultColor || this.DEFAULT_COLOR;
+    const color = colors[depth - 1] || defaultColor;
     return `<${tag} style="color:${color}">`;
   }
 
@@ -96,6 +94,7 @@ StringColorParser.propTypes = {
 StringColorParser.defaultProps = {
   tag: 'span',
   fontSize: 16,
+  defaultColor: 'black',
   colors: ['green', 'blue', 'red', 'purple', 'yellow'],
   delimiters: [{start: '(', end: ')'}, {start: '[', end: ']'}, {start: '{', end: '}'}]
 };

@@ -31,7 +31,7 @@
     "react-string-color-parser",
     "parse",
     "colors",
-    "test input"
+    "text input"
   ],
   "homepage": "https://github.com/AV29/string-color-parser#readme",
   "devDependencies": {
