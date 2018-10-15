@@ -1,12 +1,16 @@
 import 'babel-polyfill';
 import {render} from 'react-dom';
 import React from 'react';
-import ParseInput from './src/StringColorParser';
+import Parser from './src/StringColorParser';
 import './styles.less';
 
 render(
-  <ParseInput
-    colors={['skyblue', 'tomato', 'yellowgreen', 'orange']}
+  <Parser
+    tag="span"
+    delimiters={[{start: '${', end: '}'}, {start: '--[', end: ']--'}]}
+    colors={['green', 'red', 'blue', 'purple']}
+    fontSize={20}
+    defaultColor="black"
   />,
   document.getElementById('application-root')
 );

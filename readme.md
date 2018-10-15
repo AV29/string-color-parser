@@ -2,7 +2,7 @@
 
 ## Pretty narrow use cases :) 
 
-* ##### npm install react-string-color-parser
+* npm install react-string-color-parser
 
 ### Usage example
  ```
@@ -18,7 +18,10 @@
  />
  ```
  
- # Props  
+ Result 
+ ![Alt text](./example.png?raw=true "Title")
+ 
+ ##**Props**  
  
  * **tag** - HTML tag to wrap string pieces. Default - 'span'
  
