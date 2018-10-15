@@ -15,7 +15,7 @@
     "clean:lib": "npm run remove:lib && mkdir lib",
     "remove:lib": "rimraf ./lib",
     "remove:es": "rimraf ./lib/es",
-    "prebublish": "npm run build"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
