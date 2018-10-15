@@ -1,0 +1,76 @@
+{
+  "name": "string-color-parser",
+  "version": "0.0.1",
+  "description": "Parser for strings that highlights blocks in colors",
+  "main": "index.js",
+  "scripts": {
+    "lint": "esw --ext .js --ext .jsx webpack.config.* common src tools",
+    "lint:watch": "npm run lint -- --watch",
+    "prestart": "npm run lint",
+    "start": "babel-node tools/serverDev.js",
+    "prebuild": "npm run clean:lib && npm run lint",
+    "build": "npm run build:es",
+    "prebuild:es": "cross-env NODE_ENV=production webpack --config webpack.config.lib.js --progress",
+    "build:es": " cross-env NODE_ENV=production babel ./src --out-dir ./lib/es --source-maps --presets stage-1,react --plugins babel-plugin-add-module-exports,babel-plugin-transform-react-remove-prop-types,babel-plugin-transform-runtime",
+    "clean:lib": "npm run remove:lib && mkdir lib",
+    "remove:lib": "rimraf ./lib",
+    "remove:es": "rimraf ./lib/es",
+    "prebublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AV29/string-color-parser.git"
+  },
+  "author": "Anton Vlasik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AV29/string-color-parserissues"
+  },
+  "homepage": "https://github.com/AV29/string-color-parser#readme",
+  "optionalDependencies": {
+    "fsevents": "*"
+  },
+  "devDependencies": {
+    "babel-cli": "~6.26.0",
+    "babel-core": "~6.26.0",
+    "babel-eslint": "~8.0.3",
+    "babel-helper-builder-react-jsx": "~6.26.0",
+    "babel-helper-define-map": "~6.26.0",
+    "babel-helper-regex": "~6.26.0",
+    "babel-jest": "~21.2.0",
+    "babel-loader": "~7.1.2",
+    "babel-plugin-add-module-exports": "~0.2.1",
+    "babel-plugin-transform-react-remove-prop-types": "~0.4.13",
+    "babel-plugin-transform-runtime": "~6.23.0",
+    "babel-preset-env": "~1.6.1",
+    "babel-preset-es2015": "~6.24.1",
+    "babel-preset-react": "~6.24.1",
+    "babel-preset-react-hmre": "~1.1.1",
+    "babel-preset-stage-0": "~6.24.1",
+    "babel-preset-stage-1": "~6.24.1",
+    "babel-register": "~6.26.0",
+    "classlist-polyfill": "~1.2.0",
+    "copy-webpack-plugin": "~4.5.1",
+    "cross-env": "~5.1.3",
+    "css-loader": "~0.28.11",
+    "eslint": "~4.11.0",
+    "eslint-plugin-react": "~7.4.0",
+    "eslint-watch": "~3.1.3",
+    "express": "~4.16.3",
+    "extract-text-webpack-plugin": "~3.0.2",
+    "html-webpack-plugin": "~2.30.1",
+    "npm-run-all": "~4.1.2",
+    "open": "0.0.5",
+    "prop-types": "~15.6.0",
+    "react": "~16.3.1",
+    "react-dom": "~16.3.1",
+    "rimraf": "~2.6.2",
+    "style-loader": "~0.19.1",
+    "webpack": "~3.8.1",
+    "webpack-dev-server": "3.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
