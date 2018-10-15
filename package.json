@@ -2,7 +2,8 @@
   "name": "react-string-color-parser",
   "version": "0.0.2",
   "description": "React parser for strings that highlights blocks in colors",
-  "main": "index.js",
+  "main": "./lib/es/index.js",
+  "module": "./lib/es/index.js",
   "scripts": {
     "lint": "esw --ext .js --ext .jsx webpack.config.* common src tools",
     "lint:watch": "npm run lint -- --watch",
