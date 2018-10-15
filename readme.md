@@ -48,3 +48,5 @@
   
  * **defaultColor** - a color for nesting depth that out of range due to size of colors array. Default - 'black' 
  
+ * **solidHighlight** - A boolean flag defining whether to highlight text with background style. Default - false 
+ 
