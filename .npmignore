@@ -1,0 +1,8 @@
+# Ignore everything
+*
+lib/bundle.js
+# Except :
+!/lib/es
+!/lib/styles.css
+!changelog.md
+# ... and package.json and readme.md which are never ignored

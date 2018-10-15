@@ -1,6 +1,4 @@
 .idea
 node_modules
-docs
-dist
+lib
 npm-debug.log
-coverage

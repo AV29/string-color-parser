@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import {render} from 'react-dom';
 import React from 'react';
 import ParseInput from './src/StringColorParser';
-import './src/styles.css';
+import './styles.less';
 
 render(
   <ParseInput

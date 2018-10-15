@@ -1,6 +1,7 @@
-/*eslint-disable*/
 import React from 'react';
 import StringColorParser from './StringColorParser';
-import './styles.css';
+import '../styles.css';
 
-export default props => <StringColorParser {...props}/>;
+const ReactStringParser = props => <StringColorParser {...props}/>;
+
+export default ReactStringParser;

@@ -1,14 +1,13 @@
 /* eslint-disable prefer-template*/
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production')
 };
 
 module.exports = {
   devtool: 'source-map',
-  entry: './tools/libStylesEntry',
+  entry: './index',
   output: {
     path: __dirname + '/lib',
     filename: 'bundle.js'
@@ -24,19 +23,21 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false
-    }),
-    new CopyWebpackPlugin([
-      {
-        from: './src/assets',
-        to: __dirname + '/lib/es/assets'
-      }
-    ])
+    })
   ],
   resolve: {
-    extensions: ['.js', '.css', '.less']
+    extensions: ['.js', '.jsx', '.css', '.less']
   },
   module: {
     rules: [
+      {
+        test: /(\.js$|\.jsx?$)/,
+        loader: 'babel-loader',
+        exclude: [/node_modules/],
+        options: {
+          sourceMap: true
+        }
+      },
       {
         test: /(\.css|\.less)$/,
         exclude: [/docs/],
@@ -55,16 +56,6 @@ module.exports = {
                   importLoaders: 1,
                   minimize: true,
                   sourceMap: true
-                }
-              },
-              {
-                loader: 'postcss-loader',
-                options: {
-                  sourceMap: true,
-                  ident: 'postcss',
-                  config: {
-                    path: 'postcss.config.js'
-                  }
                 }
               },
               {
