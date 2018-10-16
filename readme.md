@@ -27,8 +27,9 @@
   ...
   
   <Parser
-    colors={['yellowgreebn', 'tomato', 'skyblue', 'papayawhip']}
+    colors={['yellowgreen', 'tomato', 'skyblue', 'papayawhip']}
     solidHighlight
+    searchWords={['first', 'second']}
   />
   ```
   
@@ -40,13 +41,15 @@
  
  * **tag** - HTML tag to wrap string pieces. Default - 'span'
  
- * **delimiters** - an array of delimiters for parser to respect when dividing a string. Default - ``[{start: '(', end: ')'}, {start: '[', end: ']'}, {start: '{', end: '}'}]``
+ * **delimiters** - an array of delimiters for parser to respect when dividing a string.
   
- * **colors** - an array of color representations for nested string parts. Default - ``['green', 'blue', 'red', 'purple', 'yellow']``
+ * **colors** - an array of color representations for nested string parts.
   
  * **fontSize** - custom font size for input component. Default - 16px
   
- * **defaultColor** - a color for nesting depth that out of range due to size of colors array. Default - 'black' 
+ * **defaultColor** - a color for nesting depth that out of range due to size of colors array. Default - 'lightsalmon' 
  
- * **solidHighlight** - A boolean flag defining whether to highlight text with background style. Default - false 
+ * **solidHighlight** - A boolean flag defining whether to highlight text with background style. Default - false
+  
+ * **searchWords** - Dynamically treated array of strings to be highlighted when found. When specified - cancels delimiters rule! 
  

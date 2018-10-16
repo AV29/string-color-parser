@@ -4,11 +4,38 @@ import React from 'react';
 import Parser from './src/StringColorParser';
 import './styles.less';
 
-render(
-  <Parser
-    delimiters={[{start: '${', end: '}'}, {start: '--[', end: ']--'}]}
-    fontSize={16}
-    colors={['yellowgreen', 'tomato', 'skyblue', 'papayawhip']}
-  />,
-  document.getElementById('application-root')
-);
+
+class X extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      value: ''
+    };
+
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange({target: {value}}) {
+    this.setState({value});
+  }
+
+  render() {
+    return (
+      <div style={{height: 300}}>
+        <input
+          type="text"
+          onChange={this.onChange}
+          style={{marginBottom: 10}}
+        />
+        <Parser
+          searchWords={[this.state.value]}
+          fontSize={16}
+          solidHighlight
+        />
+      </div>
+    );
+  }
+}
+
+render(<X/>, document.getElementById('application-root'));
