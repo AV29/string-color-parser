@@ -1,6 +1,6 @@
 {
   "name": "react-string-color-parser",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "React parser for strings that highlights blocks in colors",
   "main": "./lib/es/index.js",
   "module": "./lib/es/index.js",
