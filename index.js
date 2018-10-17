@@ -30,8 +30,8 @@ class X extends React.Component {
         />
         <Parser
           searchWords={[this.state.value]}
+          caseSensitive
           fontSize={16}
-          solidHighlight
         />
       </div>
     );

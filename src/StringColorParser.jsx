@@ -4,12 +4,15 @@ import {number, string, arrayOf, shape, bool} from 'prop-types';
 class StringColorParser extends Component {
 
   static getRegExp(props) {
-    const {searchWords} = props;
+    const {searchWords, caseSensitive} = props;
+    if (!searchWords) {
+      return null;
+    }
     if (!(searchWords instanceof Array)) {
       throw new Error('Search Words should be an Array type!!!');
     }
     const string = searchWords.reduce((result, current) => result.concat(`${current}|`), '');
-    return new RegExp(string, 'g');
+    return new RegExp(string, `g${!caseSensitive ? 'i' : ''}`);
   }
 
   constructor(props) {
@@ -19,16 +22,21 @@ class StringColorParser extends Component {
     this.textarea = null;
 
     this.handleInput = this.handleInput.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
 
     this.searchWordsRegExp = StringColorParser.getRegExp(props) || '';
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.searchWords !== this.props.searchWords) {
+    if (prevProps.searchWords !== this.props.searchWords) {
       this.searchWordsRegExp = StringColorParser.getRegExp(this.props);
       this.handleInput(this.textarea.value);
     }
+  }
+
+  handleChange({target: {value}}) {
+    this.handleInput(value);
   }
 
   handleInput(value) {
@@ -93,7 +101,7 @@ class StringColorParser extends Component {
         <textarea
           ref={ta => this.textarea = ta}
           style={{fontSize}}
-          onChange={({target: {value}}) => this.handleInput(value)}
+          onChange={this.handleChange}
           onScroll={this.handleScroll}
         />
       </div>
@@ -120,7 +128,8 @@ StringColorParser.defaultProps = {
   tag: 'span',
   fontSize: 16,
   defaultColor: 'lightsalmon',
-  solidHighlight: false
+  solidHighlight: false,
+  caseSensitive: false
 };
 
 export default StringColorParser;

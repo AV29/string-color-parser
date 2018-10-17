@@ -53,3 +53,5 @@
   
  * **searchWords** - Dynamically treated array of strings to be highlighted when found. When specified - cancels delimiters rule! 
  
+ * **caseSensitive** - a boolean flag to set case sensitivity for searching words 
+ 

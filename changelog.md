@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.9
+###### 2018-10-16
+*[new] Case sensitivity fro searching words added added.
+
 ## 0.0.8
 ###### 2018-10-16
 *[new] Dynamic search words feature added.
